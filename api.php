@@ -34,7 +34,11 @@ switch($_SERVER['REQUEST_METHOD'])
                         case 'listarfeiras':
                             require_once('get/listarfeiras.php');
                         break;
-
+                        
+                        case 'buscar':
+                            require_once('get/buscarfeiras.php');
+                        break;
+                        
                         default:
                             http_response_code(405);
                             echo '405 METHOD NOT ALLOWED';
