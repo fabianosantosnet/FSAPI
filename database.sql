@@ -4,7 +4,7 @@ use feiras;
 
 create table cadastrofeiras
 (
-  ID int not null,
+  ID int auto_increment not null,
   LONGITUDE int not null,
   LATITUDE int not null,
   SETCENS int not null,

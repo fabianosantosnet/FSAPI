@@ -1,19 +1,13 @@
 <?php
-#header('Content-Type: text/html; charset=utf-8');
 header('Content-Type:application/json;charset=utf-8');
 $hostname = "localhost"; // Vamos considerar localhost ou máquina local
 $username = "root";      // Username do banco mysql
 $password = "root";      // Password do banco mysql
-$_URL_COMPLETE='http://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 
 $c=mysql_connect($hostname, $username, $password) or die(mysql_error());
-#echo "Conexão efectuada com sucesso!<br/>";
- 
 $e=mysql_select_db("feiras") or die(mysql_error());
-#echo "Base de dados seleccionada!<br/>";
-
-#echo basename($_URL_COMPLETE);
 $url=explode('/',$_SERVER['PHP_SELF']);
+
 if(count($url)<5)
 {
     http_response_code(400);
@@ -23,12 +17,10 @@ if(count($url)<5)
 
 switch($_SERVER['REQUEST_METHOD'])
 {
-    case 'GET': 
-            $get = &$_GET;
-            #ID	LONG	LAT	SETCENS	AREAP	CODDIST	DISTRITO	CODSUBPREF	SUBPREFE	REGIAO5	REGIAO8	NOME_FEIRA	REGISTRO	LOGRADOURO	NUMERO	BAIRRO	REFERENCIA
+    case 'GET':             
             switch(strtolower($url[3]))
             {
-                case 'v1':
+                case 'v1':                    
                     switch(strtolower($url[4]))
                     {
                         case 'listarfeiras':
@@ -40,14 +32,23 @@ switch($_SERVER['REQUEST_METHOD'])
                         break;
                         
                         default:
+                        echo $url[4];
                             http_response_code(405);
                             echo '405 METHOD NOT ALLOWED';
                             exit;
                         break;                                                
                     }
                 break;
+                
+                default:
+                    http_response_code(501);
+                    echo '501 RESOURCE NOT IMPLEMENTED';
+                    exit;
+                break;                
              }   
-            
+             
+    break;
+    
     case 'POST':
             $post = &$_POST;
             switch(strtolower($url[3]))

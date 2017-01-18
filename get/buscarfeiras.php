@@ -49,6 +49,13 @@ switch(strtolower($url[5]))
             http_response_code(200);
             echo json_encode($data);
         }
+        else 
+        {
+            http_response_code(202);                
+            echo '202 ACCEPTED';
+            exit;                                
+        }
+
     break;
 
     case 'nomefeira':
@@ -59,9 +66,11 @@ switch(strtolower($url[5]))
             
             if(empty($nomefeira))
             {
-                http_response_code(202);                
+                http_response_code(202);   
+                echo '202 ACCEPTED';
                 exit;                    
             }
+
         }
         else
         {
@@ -81,6 +90,13 @@ switch(strtolower($url[5]))
             http_response_code(200);
             echo json_encode($data);
         }
+        else 
+        {
+            http_response_code(202);                
+            echo '202 ACCEPTED';
+            exit;                                
+        }    
+
     break;
     
     default:
