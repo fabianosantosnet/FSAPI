@@ -46,7 +46,7 @@ switch($_SERVER['REQUEST_METHOD'])
                         break;                                                
                     }
                 break;
-                
+             }   
             
     case 'POST':
             $post = &$_POST;
@@ -74,6 +74,34 @@ switch($_SERVER['REQUEST_METHOD'])
                 break;
             }            
     break;                
+
+
+    case 'DELETE':            
+            switch(strtolower($url[3]))
+            {
+                case 'v1':
+                    switch(strtolower($url[4]))
+                    {
+                        case 'excluirfeiras':                  
+                            require_once('delete/deletefeiras.php');
+                        break;
+
+                        default:
+                            http_response_code(405);
+                            echo '405 METHOD NOT ALLOWED';
+                            exit;
+                        break;                                                
+                    }
+                break;
+                
+                default:
+                    http_response_code(501);
+                    echo '501 RESOURCE NOT IMPLEMENTED';
+                    exit;
+                break;
+            }            
+    break;
+
 
     default:
             http_response_code(405);
