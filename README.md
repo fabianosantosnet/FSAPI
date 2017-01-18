@@ -1,17 +1,17 @@
 # FSAPI - Simple JSON API
 <h2>About</h2>
-<p>This project use a source file "DEINFO_AB_FEIRASLIVRES_2014.csv" from "http://www.prefeitura.sp.gov.br/cidade/secretarias/upload/chamadas/feiras_livres_1429113213.zip".</p>
-<p>The objective is learning about json api.</p>
-<p>To tests was used Firefox Plugin at restclient.net.</p>
+<p>This project use a source file "DEINFO_AB_FEIRASLIVRES_2014.csv" at "http://www.prefeitura.sp.gov.br/cidade/secretarias/upload/chamadas/feiras_livres_1429113213.zip".</p>
+<p>The project's objective is learning about JSON API.</p>
+<p>Firefox Plugin (restclient.net) was used to develop.</p>
 
 <h3>Requirements</h3>
 <p>APACHE (or other), PHP5, MySQL. Also called LAMP.</p>
 
 <h3>First steps</h3>
-<p>Paste the code in your webserver '/var/www/html'.</p>
+<p>Place the code in your webserver '/var/www/html'.</p>
 
-<p>Enter in mysql prompt shell<br />
-<code># mysql -uUser -p [ENTER]</code> type your user and password.<br />
+<p>Enter in prompt shell and type: <br />
+<code>mysql -uUser -p [ENTER]</code> type your user and password.<br />
 Open <i>database.sql</i>, copy the 25 lines, and paste in your mysql prompt command.<br />
 Database name: feiras<br />
 Table name: cadastrofeiras</p>
@@ -21,7 +21,7 @@ Open the file <i>api.php</i> and change it according to your mysql database sett
 $username = "root"
 $password = "root"</pre>
 
-<p>Important: the files need to be inside the FSAPI folder.</p>
+<p>Important: the files should be inside the FSAPI folder.</p>
 
 <hr />
 <b>ERRORS</b><br />
@@ -48,7 +48,7 @@ $password = "root"</pre>
 <b>REQUEST</b><br />
 <code>http://localhost/FSAPI/api.php/v1/listarfeiras</code> -> List all rows from table.<br />
 <code>http://localhost/FSAPI/api.php/v1/listarfeiras?limit=10</code> -> List 10 rows from table.<br />
-Notice that the return fields are numeric 0-16 or by name. 0 equals 'ID', 1 equals "LONGITUDE" ... 16 equals "REFERENCIA".
+Notice that the return fields are numerics 0-16 or by table's name. 0 equals 'ID', 1 equals "LONGITUDE" ... 16 equals "REFERENCIA".
 <pre>
     [
     {
